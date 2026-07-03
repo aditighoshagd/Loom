@@ -1,0 +1,80 @@
+# =========================
+# Spring Boot / Maven
+# =========================
+HELP.md
+target/
+**/target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Keep target folders inside src if any
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# =========================
+# Application Config
+# =========================
+**/application.yml
+**/application.yaml
+**/application-local.yml
+**/application-local.yaml
+**/application-dev.yml
+**/application-dev.yaml
+**/application-prod.yml
+**/application-prod.yaml
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+
+# =========================
+# Spring Tool Suite
+# =========================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# =========================
+# NetBeans
+# =========================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# OS / Misc
+# =========================
+Thumbs.db
+*.swp
+*.swo
