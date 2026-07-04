@@ -1,4 +1,4 @@
-package com.codingshuttle.linkedInProject.postsService.client;
+package com.loom.postsService.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;

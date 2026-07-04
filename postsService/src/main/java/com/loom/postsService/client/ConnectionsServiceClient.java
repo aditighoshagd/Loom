@@ -1,6 +1,6 @@
-package com.codingshuttle.linkedInProject.postsService.client;
+package com.loom.postsService.client;
 
-import com.codingshuttle.linkedInProject.postsService.dto.PersonDto;
+import com.loom.postsService.dto.PersonDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

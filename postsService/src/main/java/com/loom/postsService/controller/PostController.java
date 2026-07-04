@@ -1,9 +1,9 @@
-package com.codingshuttle.linkedInProject.postsService.controller;
+package com.loom.postsService.controller;
 
-import com.codingshuttle.linkedInProject.postsService.auth.AuthContextHolder;
-import com.codingshuttle.linkedInProject.postsService.dto.PostCreateRequestDto;
-import com.codingshuttle.linkedInProject.postsService.dto.PostDto;
-import com.codingshuttle.linkedInProject.postsService.service.PostService;
+import com.loom.postsService.auth.AuthContextHolder;
+import com.loom.postsService.dto.PostCreateRequestDto;
+import com.loom.postsService.dto.PostDto;
+import com.loom.postsService.service.PostService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.codingshuttle.linkedInProject.postsService.config;
+package com.loom.postsService.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.codingshuttle.linkedInProject.postsService.config;
+package com.loom.postsService.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
-package com.codingshuttle.linkedInProject.postsService.controller;
+package com.loom.postsService.controller;
 
-import com.codingshuttle.linkedInProject.postsService.service.PostLikeService;
+import com.loom.postsService.service.PostLikeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

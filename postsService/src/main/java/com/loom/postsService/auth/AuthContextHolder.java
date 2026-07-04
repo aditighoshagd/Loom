@@ -1,4 +1,4 @@
-package com.codingshuttle.linkedInProject.postsService.auth;
+package com.loom.postsService.auth;
 
 public class AuthContextHolder {
 

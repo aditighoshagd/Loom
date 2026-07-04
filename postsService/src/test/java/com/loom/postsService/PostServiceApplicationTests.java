@@ -1,4 +1,4 @@
-package com.loom.postService;
+package com.loom.postsService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
