@@ -1,4 +1,4 @@
-package com.loom.postService;
+package com.loom.postsService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
