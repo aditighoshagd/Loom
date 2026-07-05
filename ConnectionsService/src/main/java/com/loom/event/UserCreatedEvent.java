@@ -1,4 +1,4 @@
-package com.loom.userService.event;
+package com.loom.event;
 
 import lombok.Builder;
 import lombok.Data;

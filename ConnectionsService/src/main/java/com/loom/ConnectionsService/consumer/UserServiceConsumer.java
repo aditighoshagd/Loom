@@ -1,7 +1,7 @@
 package com.loom.ConnectionsService.consumer;
 
-import com.codingshuttle.linkedInProject.ConnectionsService.service.PersonService;
-import com.codingshuttle.linkedInProject.userService.event.UserCreatedEvent;
+import com.loom.ConnectionsService.service.PersonService;
+import com.loom.userService.event.UserCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
