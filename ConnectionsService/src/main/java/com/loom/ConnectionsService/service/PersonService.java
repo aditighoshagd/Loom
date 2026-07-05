@@ -1,4 +1,4 @@
-package com.codingshuttle.linkedInProject.ConnectionsService.service;
+package com.loom.ConnectionsService.service;
 
 import com.loom.ConnectionsService.entity.Person;
 import com.loom.ConnectionsService.repository.PersonRepository;
