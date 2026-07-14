@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "intelligence-service", path = "/intelligence")
+@FeignClient(name = "intelligence-service", path = "/intelligence", url = "${INTELLIGENCE_SERVICE_URI:}")
 public interface IntelligenceServiceClient {
 
     @PostMapping("/summarize")
