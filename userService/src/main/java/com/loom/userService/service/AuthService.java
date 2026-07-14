@@ -62,4 +62,13 @@ public class AuthService {
 
         return jwtService.generateAccessToken(user);
     }
+
+    public UserDto updateProfilePicture(Long userId, String profilePictureUrl) {
+        log.info("Updating profile picture for user with ID: {}", userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with ID: " + userId));
+        user.setProfilePictureUrl(profilePictureUrl);
+        user = userRepository.save(user);
+        return modelMapper.map(user, UserDto.class);
+    }
 }
