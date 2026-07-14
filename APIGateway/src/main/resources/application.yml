@@ -12,6 +12,14 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: user-service-private
+          uri: ${USER_SERVICE_URI:lb://USER-SERVICE}
+          predicates:
+            - Path=/api/v1/users/core/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
+
         - id: user-service
           uri: ${USER_SERVICE_URI:lb://USER-SERVICE}
           predicates:
