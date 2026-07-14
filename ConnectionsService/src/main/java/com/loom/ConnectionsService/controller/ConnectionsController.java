@@ -40,4 +40,10 @@ public class ConnectionsController {
         connectionsService.rejectConnectionRequest(userId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{userId}/subscribers/count")
+    public ResponseEntity<Long> getSubscriberCount(@PathVariable Long userId) {
+        Long count = connectionsService.getSubscriberCount(userId);
+        return ResponseEntity.ok(count);
+    }
 }

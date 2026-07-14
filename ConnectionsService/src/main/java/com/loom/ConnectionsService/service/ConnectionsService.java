@@ -25,67 +25,33 @@ public class ConnectionsService {
 
     public void sendConnectionRequest(Long receiverId) {
         Long senderId = AuthContextHolder.getCurrentUserId();
-        log.info("sending connection request with senderId: {}, receiverId: {}", senderId, receiverId);
+        log.info("sending subscription request with senderId: {}, receiverId: {}", senderId, receiverId);
 
         if (senderId.equals(receiverId)) {
-            throw new BadRequestException("Both sender and receiver are the same");
+            throw new BadRequestException("Both subscriber and writer are the same");
         }
 
-        boolean alreadySentRequest = personRepository.connectionRequestExists(senderId, receiverId);
-        if (alreadySentRequest) {
-            throw new BadRequestException("Connection request already exists, cannot send again");
-        }
-
-        boolean alreadyConnected = personRepository.alreadyConnected(senderId, receiverId);
-        if (alreadyConnected) {
-            throw new BadRequestException("Already connected users, cannot add connection request");
+        boolean alreadySubscribed = personRepository.alreadyConnected(senderId, receiverId);
+        if (alreadySubscribed) {
+            throw new BadRequestException("Already subscribed to this writer");
         }
 
         personRepository.addConnectionRequest(senderId, receiverId);
-        log.info("Successfully sent the connection request");
+        log.info("Successfully subscribed");
     }
 
     public void acceptConnectionRequest(Long senderId) {
-        Long receiverId = AuthContextHolder.getCurrentUserId();
-        log.info("Accepting a connection request with senderId: {}, receiverId: {}", senderId, receiverId);
-
-        if (senderId.equals(receiverId)) {
-            throw new BadRequestException("Both sender and receiver are the same");
-        }
-
-        boolean alreadyConnected = personRepository.alreadyConnected(senderId, receiverId);
-        if (alreadyConnected) {
-            throw new BadRequestException("Already connected users, cannot accept connection request again");
-        }
-
-        boolean alreadySentRequest = personRepository.connectionRequestExists(senderId, receiverId);
-        if (!alreadySentRequest) {
-            throw new BadRequestException("No Connection request exists, cannot accept without request");
-        }
-
-        personRepository.acceptConnectionRequest(senderId, receiverId);
-
-        log.info("Successfully accepted the connection request with senderId: {}, receiverId: {}", senderId,
-                receiverId);
-
+        throw new BadRequestException("Accepting connection is not supported on Substack");
     }
 
     public void rejectConnectionRequest(Long senderId) {
         Long receiverId = AuthContextHolder.getCurrentUserId();
-        log.info("Rejecting a connection request with senderId: {}, receiverId: {}", senderId, receiverId);
-
-        if (senderId.equals(receiverId)) {
-            throw new BadRequestException("Both sender and receiver are the same");
-        }
-
-        boolean alreadySentRequest = personRepository.connectionRequestExists(senderId, receiverId);
-        if (!alreadySentRequest) {
-            throw new BadRequestException("No Connection request exists, cannot reject it");
-        }
-
+        log.info("Unsubscribing from writer with id: {}", senderId);
         personRepository.rejectConnectionRequest(senderId, receiverId);
+    }
 
-        log.info("Successfully rejected the connection request with senderId: {}, receiverId: {}", senderId,
-                receiverId);
+    public Long getSubscriberCount(Long userId) {
+        log.info("Getting subscriber count for user with ID: {}", userId);
+        return personRepository.getSubscriberCount(userId);
     }
 }
