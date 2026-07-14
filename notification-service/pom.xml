@@ -12,7 +12,7 @@
 	<artifactId>notification-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>notification-service</name>
-	<description>Notification service for LinkedIn Project</description>
+	<description>Notification service for Loom Project</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -114,7 +114,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>docker.io/yourdockerhub/linkedin-app-${project.name}:${project.version}</image>
+						<image>docker.io/yourdockerhub/loom-app-${project.name}:${project.version}</image>
 						<tags>
 							<tag>latest</tag>
 						</tags>

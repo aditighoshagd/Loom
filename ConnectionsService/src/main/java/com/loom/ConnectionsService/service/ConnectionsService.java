@@ -41,7 +41,7 @@ public class ConnectionsService {
     }
 
     public void acceptConnectionRequest(Long senderId) {
-        throw new BadRequestException("Accepting connection is not supported on Substack");
+        throw new BadRequestException("Accepting connection is not supported on Loom");
     }
 
     public void rejectConnectionRequest(Long senderId) {
