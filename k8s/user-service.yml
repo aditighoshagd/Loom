@@ -25,13 +25,24 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
           - name: DB_USERNAME
-            value: user
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: USER_DB_USERNAME
           - name: DB_PASSWORD
-            value: password
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: USER_DB_PASSWORD
           - name: DB_SERVER
             value: user-db
           - name: DB_NAME
             value: userDB
+          - name: JWT_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: JWT_SECRET_KEY
         ports:
         - containerPort: 9020
 

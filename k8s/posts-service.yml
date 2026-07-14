@@ -25,9 +25,15 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
           - name: DB_USERNAME
-            value: user
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: POSTS_DB_USERNAME
           - name: DB_PASSWORD
-            value: password
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: POSTS_DB_PASSWORD
           - name: DB_SERVER
             value: posts-db
           - name: DB_NAME

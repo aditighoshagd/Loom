@@ -24,6 +24,31 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
+          - name: CLOUDINARY_CLOUD_NAME
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: CLOUDINARY_CLOUD_NAME
+          - name: CLOUDINARY_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: CLOUDINARY_API_KEY
+          - name: CLOUDINARY_API_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: CLOUDINARY_API_SECRET
+          - name: GCLOUD_STORAGE_BUCKET_NAME
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: GCLOUD_STORAGE_BUCKET_NAME
+          - name: GCLOUD_CREDENTIALS_JSON
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: GCLOUD_CREDENTIALS_JSON
         ports:
         - containerPort: 9050
 

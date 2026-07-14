@@ -25,9 +25,15 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
           - name: DB_USERNAME
-            value: neo4j
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: NEO4J_USERNAME
           - name: DB_PASSWORD
-            value: password
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: NEO4J_PASSWORD
           - name: DB_NAME
             value: connections-db
           - name: KAFKA_LOG4J_ROOT_LOGLEVEL

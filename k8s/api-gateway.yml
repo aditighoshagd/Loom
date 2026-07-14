@@ -25,7 +25,12 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_PROFILES_ACTIVE
-          value: k8s  
+          value: k8s
+        - name: JWT_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loom-secrets
+              key: JWT_SECRET_KEY
         readinessProbe:
           httpGet:
             path: /actuator/health
@@ -45,4 +50,3 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-
