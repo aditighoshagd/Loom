@@ -24,6 +24,15 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
+          - name: OPENAI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: loom-secrets
+                key: openai-api-key
+          - name: DB_USERNAME
+            value: user
+          - name: DB_PASSWORD
+            value: password
         ports:
         - containerPort: 9012
 

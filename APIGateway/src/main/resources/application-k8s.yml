@@ -6,6 +6,8 @@ USER_SERVICE_URI: http://user-service
 POSTS_SERVICE_URI: http://posts-service
 CONNECTIONS_SERVICE_URI: http://connections-service
 NOTIFICATION_SERVICE_URI: http://notification-service
+UPLOADER_SERVICE_URI: http://uploader-service
+INTELLIGENCE_SERVICE_URI: http://intelligence-service
 
 management:
   endpoints:
