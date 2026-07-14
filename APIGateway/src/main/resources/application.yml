@@ -34,3 +34,11 @@ spring:
           filters:
             - StripPrefix=2
             - name: AuthenticationFilter
+
+        - id: intelligence-service
+          uri: ${INTELLIGENCE_SERVICE_URI:lb://INTELLIGENCE-SERVICE}
+          predicates:
+            - Path=/api/v1/intelligence/**
+          filters:
+            - StripPrefix=2
+            - name: AuthenticationFilter
