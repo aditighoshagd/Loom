@@ -11,6 +11,7 @@ public class PostDto {
     private String title;
     private String subTitle;
     private Long parentPostId;
+    private String imageUrl;
     private Long userId;
     private LocalDateTime createdAt;
 }
