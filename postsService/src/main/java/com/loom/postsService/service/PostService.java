@@ -3,6 +3,7 @@ package com.loom.postsService.service;
 import com.loom.postsService.auth.AuthContextHolder;
 import com.loom.postsService.client.ConnectionsServiceClient;
 import com.loom.postsService.client.UploaderServiceClient;
+import com.loom.postsService.client.IntelligenceServiceClient;
 import com.loom.postsService.dto.PersonDto;
 import com.loom.postsService.dto.PostCreateRequestDto;
 import com.loom.postsService.dto.PostDto;
@@ -35,6 +36,7 @@ public class PostService {
     private final CommentRepository commentRepository;
     private final ModelMapper modelMapper;
     private final ConnectionsServiceClient connectionsServiceClient;
+    private final IntelligenceServiceClient intelligenceServiceClient;
     private final KafkaTemplate<Long, PostCreated> postCreatedKafkaTemplate;
     private final KafkaTemplate<Long, CommentCreatedEvent> commentCreatedKafkaTemplate;
     private final KafkaTemplate<Long, PostRestackedEvent> postRestackedKafkaTemplate;
@@ -174,5 +176,31 @@ public class PostService {
         postRestackedKafkaTemplate.send("post_restacked_topic", event);
         
         return modelMapper.map(restack, PostDto.class);
+    }
+
+    public String getAiSummary(Long postId) {
+        log.info("Requesting AI summary for post: {}", postId);
+        Post post = postRepository.findById(postId).orElseThrow(() -> 
+            new ResourceNotFoundException("Post not found with ID: " + postId));
+        return intelligenceServiceClient.summarizeNewsletter(post.getContent()).getBody();
+    }
+
+    public List<String> getAiTags(Long postId) {
+        log.info("Requesting AI suggested tags for post: {}", postId);
+        Post post = postRepository.findById(postId).orElseThrow(() -> 
+            new ResourceNotFoundException("Post not found with ID: " + postId));
+        return intelligenceServiceClient.suggestTags(post.getContent()).getBody();
+    }
+
+    public List<PostDto> semanticSearch(String query, int limit) {
+        log.info("Performing semantic search with query: {}", query);
+        List<Long> matchingIds = intelligenceServiceClient.searchSimilarPosts(query, limit).getBody();
+        if (matchingIds == null || matchingIds.isEmpty()) {
+            return List.of();
+        }
+        List<Post> posts = postRepository.findAllById(matchingIds);
+        return posts.stream()
+                .map(post -> modelMapper.map(post, PostDto.class))
+                .collect(Collectors.toList());
     }
 }

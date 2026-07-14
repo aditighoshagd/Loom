@@ -70,4 +70,24 @@ public class PostController {
         PostDto restack = postService.restackPost(postId, content);
         return new ResponseEntity<>(restack, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{postId}/ai-summary")
+    public ResponseEntity<String> getAiSummary(@PathVariable Long postId) {
+        String summary = postService.getAiSummary(postId);
+        return ResponseEntity.ok(summary);
+    }
+
+    @GetMapping("/{postId}/ai-tags")
+    public ResponseEntity<List<String>> getAiTags(@PathVariable Long postId) {
+        List<String> tags = postService.getAiTags(postId);
+        return ResponseEntity.ok(tags);
+    }
+
+    @GetMapping("/semantic-search")
+    public ResponseEntity<List<PostDto>> semanticSearch(
+            @RequestParam String query,
+            @RequestParam(defaultValue = "10") int limit) {
+        List<PostDto> matches = postService.semanticSearch(query, limit);
+        return ResponseEntity.ok(matches);
+    }
 }
