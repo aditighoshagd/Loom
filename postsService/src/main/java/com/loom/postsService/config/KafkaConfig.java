@@ -16,4 +16,14 @@ public class KafkaConfig {
     public NewTopic postLiked() {
         return new NewTopic("post_liked_topic", 3, (short) 1);
     }
+
+    @Bean
+    public NewTopic commentCreated() {
+        return new NewTopic("comment_created_topic", 3, (short) 1);
+    }
+
+    @Bean
+    public NewTopic postRestacked() {
+        return new NewTopic("post_restacked_topic", 3, (short) 1);
+    }
 }
