@@ -25,10 +25,7 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: k8s
           - name: OPENAI_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: loom-secrets
-                key: openai-api-key
+            value: ${OPENAI_API_KEY}
           - name: DB_USERNAME
             value: user
           - name: DB_PASSWORD
