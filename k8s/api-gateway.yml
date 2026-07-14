@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: yourdockerhub/linkedin-app-api-gateway
+        image: yourdockerhub/loom-app-api-gateway
         resources:
           limits:
               memory: "500Mi"

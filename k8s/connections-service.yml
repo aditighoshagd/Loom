@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: connections-service
-        image: yourdockerhub/linkedin-app-connections-service
+        image: yourdockerhub/loom-app-connections-service
         resources:
           limits:
             memory: "400Mi"

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: intelligence-service
-        image: yourdockerhub/linkedin-app-intelligence-service
+        image: yourdockerhub/loom-app-intelligence-service
         resources:
           limits:
             memory: "400Mi"

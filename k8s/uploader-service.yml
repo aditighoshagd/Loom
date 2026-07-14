@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: uploader-service
-        image: yourdockerhub/linkedin-app-uploader-service
+        image: yourdockerhub/loom-app-uploader-service
         resources:
           limits:
             memory: "400Mi"
