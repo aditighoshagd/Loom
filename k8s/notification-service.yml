@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: notification-service
-        image: yourdockerhub/loom-app-notification-service
+        image: aditiighosh/loom-app-notification-service
         resources:
           limits:
             memory: "400Mi"

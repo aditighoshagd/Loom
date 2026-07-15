@@ -71,4 +71,11 @@ public class AuthService {
         user = userRepository.save(user);
         return modelMapper.map(user, UserDto.class);
     }
+
+    public UserDto getUserById(Long userId) {
+        log.info("Fetching profile for user with ID: {}", userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with ID: " + userId));
+        return modelMapper.map(user, UserDto.class);
+    }
 }

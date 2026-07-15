@@ -77,7 +77,7 @@ public class IntelligenceService {
     public List<Long> searchSimilarPosts(String query, int limit) {
         log.info("Searching similar posts semantically for query: {}", query);
         List<Document> results = vectorStore.similaritySearch(
-                SearchRequest.query(query).topK(limit)
+                SearchRequest.query(query).withTopK(limit)
         );
 
         return results.stream()

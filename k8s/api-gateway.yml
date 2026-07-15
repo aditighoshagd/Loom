@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: yourdockerhub/loom-app-api-gateway
+        image: aditiighosh/loom-app-api-gateway
         resources:
           limits:
               memory: "500Mi"
@@ -35,7 +35,7 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 300
+          initialDelaySeconds: 30
           periodSeconds: 20
           timeoutSeconds: 20
 

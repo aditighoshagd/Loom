@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: posts-db
-        image: postgres:16
+        image: pgvector/pgvector:pg16
         resources:
           limits:
               memory: "200Mi"

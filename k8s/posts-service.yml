@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: posts-service
-        image: yourdockerhub/loom-app-posts-service
+        image: aditiighosh/loom-app-posts-service
         resources:
           limits:
             memory: "400Mi"

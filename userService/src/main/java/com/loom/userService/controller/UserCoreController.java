@@ -20,4 +20,10 @@ public class UserCoreController {
         UserDto userDto = authService.updateProfilePicture(userId, profilePictureUrl);
         return ResponseEntity.ok(userDto);
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long userId) {
+        UserDto userDto = authService.getUserById(userId);
+        return ResponseEntity.ok(userDto);
+    }
 }

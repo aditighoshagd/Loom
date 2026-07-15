@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>21</java.version>
 		<spring-cloud.version>2023.0.5</spring-cloud.version>
+		<lombok.version>1.18.46</lombok.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -117,6 +118,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
@@ -139,7 +141,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>docker.io/yourdockerhub/loom-app-${project.name}:${project.version}</image>
+						<image>docker.io/aditiighosh/loom-app-${project.name}:${project.version}</image>
 						<tags>
 							<tag>latest</tag>
 						</tags>

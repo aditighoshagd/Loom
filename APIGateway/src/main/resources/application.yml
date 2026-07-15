@@ -8,6 +8,8 @@ logging:
     reactor.netty.http.client: DEBUG
 
 spring:
+  codec:
+    max-in-memory-size: 10MB
   application.name: api-gateway
   cloud:
     gateway:
