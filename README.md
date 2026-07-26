@@ -13,6 +13,8 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Neo4j](https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white)](https://neo4j.com/)
 
+**🌐 Live:** [loom.solvix.buzz](https://loom.solvix.buzz)
+
 </div>
 
 ---
@@ -21,15 +23,17 @@
 
 **Loom** is a Substack-style newsletter platform built on a cloud-native microservices architecture. Writers publish long-form newsletters; readers subscribe to their favourite writers and get personalised feeds. The platform is enriched by an AI assistant (`loom-intelligence-service`) that auto-summarises articles, suggests tags, generates titles, and powers semantic search — all backed by OpenAI and pgvector.
 
+The React frontend lives in a separate repository → **[Loom-Frontend](https://github.com/aditighoshagd/Loom-Frontend)**
+
 ---
 
 ## 🏗️ Architecture
 
 ```
                           ┌─────────────┐
-                          │   Client    │
+                          │   Client    │  ← React (loom.solvix.buzz)
                           └──────┬──────┘
-                                 │ HTTP
+                                 │ HTTPS
                           ┌──────▼──────┐
                           │ API Gateway │  ← JWT auth filter
                           │  port 8080  │
@@ -111,6 +115,7 @@
 | Category | Technology |
 |---|---|
 | **Backend** | Java 21, Spring Boot 3.3.3 |
+| **Frontend** | React 19, Vite 8, Tailwind CSS 4, shadcn/ui |
 | **Service Discovery** | Spring Cloud Netflix Eureka (local) |
 | **API Gateway** | Spring Cloud Gateway |
 | **Inter-service Comms** | OpenFeign (sync), Apache Kafka (async) |
@@ -120,6 +125,7 @@
 | **File Storage** | Cloudinary, Google Cloud Storage |
 | **Containerisation** | Docker (Jib Maven Plugin) |
 | **Orchestration** | Kubernetes (GKE) |
+| **SSL** | Google Managed Certificate |
 | **Build** | Maven + Maven Wrapper |
 
 ---
@@ -144,6 +150,8 @@ Loom/
 │   ├── notification-service.yml
 │   ├── uploader-service.yml
 │   ├── intelligence-service.yml
+│   ├── frontend.yml
+│   ├── certificate.yml       # Google Managed SSL
 │   ├── user-db.yml
 │   ├── posts-db.yml
 │   ├── notification-db.yml
@@ -263,9 +271,11 @@ kubectl apply -f k8s/uploader-service.yml
 kubectl apply -f k8s/intelligence-service.yml
 ```
 
-### 6. Deploy API Gateway & Ingress
+### 6. Deploy Frontend, API Gateway & Ingress
 ```bash
+kubectl apply -f k8s/frontend.yml
 kubectl apply -f k8s/api-gateway.yml
+kubectl apply -f k8s/certificate.yml
 kubectl apply -f k8s/ingress.yml
 ```
 
@@ -273,7 +283,7 @@ kubectl apply -f k8s/ingress.yml
 
 ## 🔌 API Reference
 
-All routes go through the API Gateway at `http://<gateway-host>`. All endpoints (except signup/login) require:
+All routes go through the API Gateway at `https://loom.solvix.buzz`. All endpoints (except signup/login) require:
 ```
 Authorization: Bearer <jwt-token>
 ```
