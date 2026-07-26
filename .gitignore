@@ -1,0 +1,80 @@
+# =========================
+# Spring Boot / Maven Build Output
+# =========================
+target/
+**/target/
+build/
+**/build/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Maven wrapper jar ignore exception
+!.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# Application & Local Environment Configs
+# =========================
+.env
+.env.*
+application-local.yml
+application-local.yaml
+application-secret.yml
+application-secret.yaml
+**/application-local.yml
+**/application-local.yaml
+**/application-secret.yml
+**/application-secret.yaml
+
+# =========================
+# Logs & Temporary Files
+# =========================
+*.log
+logs/
+**/logs/
+*.tmp
+
+# =========================
+# OS & System Files
+# =========================
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# =========================
+# IDEs & Code Editors
+# =========================
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+**/out/
+
+# Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+*.code-workspace
