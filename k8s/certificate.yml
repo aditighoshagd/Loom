@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: loom-cert
+spec:
+  domains:
+    - loom.solvix.buzz

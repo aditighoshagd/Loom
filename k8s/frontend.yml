@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: aditiighosh/loom-frontend:v1.0.1
+        image: aditiighosh/loom-frontend:v1.0.2
         resources:
           limits:
             memory: "300Mi"
